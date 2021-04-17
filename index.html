@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Internship 2</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="banner">
+        <div class="content-area">
+            <select id="oper" class="head h-options">
+                <option value="1">Add</option>
+                <option value="2">sub</option>
+                <option value="3">mul</option>
+
+            </select>
+            <div class="calculator">
+                <div class="in-fields">
+                    <input type="text" name="" id="value1" onchange="operation()">
+                    <input type="text" name="" id="value2">
+
+                    <h3 id="anstxt" class="ans notactive">Answer is : <span id="answer"></span></h3>
+                </div>
+
+                <button id="add" class="banner-btn">Process</button>
+                <button id="reset" class="banner-btn sec-btn" onclick="reset()">Reset </button>
+            </div>
+
+        </div>
+    </div>
+</body>
+<script>
+    document.getElementById('add').addEventListener('click', operation)
+
+    function operation() {
+        var x = parseInt(document.getElementById('value1').value);
+        var y = parseInt(document.getElementById('value2').value);
+        var operation = document.getElementById('oper').value;
+        if (operation == '1') {
+            var ans = x + y;
+        } else if (operation == '2') {
+            var ans = x - y;
+        } else {
+            var ans = x * y;
+        }
+
+        document.getElementById('anstxt').classList.remove('notactive');
+        document.getElementById('answer').innerText = ans;
+    }
+
+    function reset() {
+        document.getElementById('value1').value = '';
+        document.getElementById('value2').value = '';
+        document.getElementById('answer').innerText = '';
+
+        document.getElementById('anstxt').classList.add('notactive');
+    }
+</script>
+
+</html>
